@@ -59,7 +59,7 @@ class neron:
         for conection in self.conections:
             conection[1] += random.gauss(0,CONECTION_RANDOMNESS) #randomness factor in conection strenth, alllows nerons to go from positive to negative
             if conection[1] > 0:
-                conection[1] -= (conection[1]**1.35)*CONECTION_STRENGTH_DECAY#need exponent?
+                conection[1] -= (conection[1]**1.4)*CONECTION_STRENGTH_DECAY#need exponent?
             else:
                 conection[1] -= conection[1] *CONECTION_STRENGTH_DECAY
         #Eddit Weights:
