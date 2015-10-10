@@ -9,20 +9,20 @@ Clock = pygame.time.Clock()
 #load config file
 #better hebbian learning
 #better conection initialization
-numb_of_nerons = 8000
+numb_of_nerons = 10000
 THRESHHOLD = .25
-STARTING_FATIGUE = 20
+STARTING_FATIGUE = 0
 #Conection vars
 CONECTION_WEIGHT_MEAN = 1.25
 CONECTION_WEIGHT_VARIANCE = 1.5
-CONECTION_DISTANCE_ROOT_MEAN = 3.25
+CONECTION_DISTANCE_ROOT_MEAN = 2.3
 CONECTION_DISTANCE_ROOT_VARIANCE = 1
 CONNECTION_STRENGTH_INCREASE = .07
-CONECTION_STRENGTH_DECAY = 1.0/2000.0
+CONECTION_STRENGTH_DECAY = 1.0/8000.0
 
 #flip vars
 FATIGUE_RESTORATION = .15
-FATIGUE_RESTORATION_MIN = 1.0/700.0
+FATIGUE_RESTORATION_MIN = 1.0/16000.0
 CONECTION_RANDOMNESS = .008
 
 class neron:
@@ -33,7 +33,7 @@ class neron:
         self.conections = []
         x,y = round(((random.random()+.25*random.random())/1.25)*1920),round(((random.random()+.25*random.random())/1.25)*1080)
         self.position = (int(x), int(y))
-        self.fatigue = STARTING_FATIGUE
+        self.fatigue = random.gauss(-.1,.1)
 ##        if x<1000 and x>800 and y<1000 and y>800:
 ##            self.sum_input = 2
 ##        else:
@@ -106,8 +106,6 @@ pygame.display.toggle_fullscreen()
 mainloop = True
 pause = False
 
-
-    
 while mainloop == True:
     screen.fill((0,0,0))
     fireing = []
@@ -176,5 +174,3 @@ while mainloop == True:
                 pass
     pygame.display.flip()
     #Clock.tick(60)
-        
-
